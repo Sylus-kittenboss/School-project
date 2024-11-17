@@ -1,0 +1,41 @@
+import { useState, useEffect } from 'react'
+import ReactConfetti from 'react-confetti'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Bell, Plus, Search, Menu, Sun, Moon, Shield, Swords } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
+
+export default function Dashboard() {
+  // ... (previous state declarations)
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
+
+  // ... (rest of the component code)
+
+  const handleCreateGuild = () => {
+    if (newGuild.schoolName && newGuild.extension && newGuild.guildName && newGuild.guildMaster) {
+      const accessCode = `${newGuild.guildName.substring(0, 3).toUpperCase()}${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}`
+      setGuilds([...guilds, { name: newGuild.guildName, students: 0, accessCode }])
+      setNewGuild({ schoolName: '', extension: '', guildName: '', guildMaster: '' })
+      setShowConfetti(true)
+      setShowSuccessMessage(true)
+      setTimeout(() => {
+        setShowConfetti(false)
+        setShowSuccessMessage(false)
+      }, 5000)
+    }
+  }
+
+  // ... (rest of the component code)
+}
